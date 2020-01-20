@@ -1,6 +1,13 @@
 #!/bin/bash
 
-TOKEN=''
+TOKEN=${TOKEN:-''}
+
+if [[ $TOKEN == '' ]]
+then
+echo "Call this script passing token in this way:"
+echo "TOKEN=<your_token> $0"
+exit -1
+fi
 
 list_subgroups()
 {
