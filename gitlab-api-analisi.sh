@@ -33,7 +33,7 @@ clone_recursive_all_repo()
 group_folder=$1
 group_id=$2
 relative_path=${3:-'.'}
-echo "mkdir -p $relative_path/$group_folder"
+mkdir -p $relative_path/$group_folder
 #list_project $group_id
 }
 
@@ -43,7 +43,7 @@ relative_path=${1:-'.'}
 list_groups|while read line
 do
 folder=`echo $line|sed s+https://gitlab.com/groups/++`
-clone_recursive_all_repo $folder $folder $relative_path
+clone_recursive_all_repo $folder $relative_path
 done
 }
 
