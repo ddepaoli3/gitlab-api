@@ -47,7 +47,6 @@ clone_recursive_all_repo $folder $relative_path
 done
 }
 
-generate_folder_tree_from_groups
+generate_folder_tree_from_groups ~/workspace-gitlab-clone
 #list_subgroups 1179730
 #.[] |  "\(.web_url) \(.id)"
-#clone_recursive_all_repo xp-coast/il-sole-24-ore 6031671
