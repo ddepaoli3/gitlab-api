@@ -28,22 +28,14 @@ group_id=$1
 curl "https://gitlab.com/api/v4/groups/$group_id/projects?private_token=$TOKEN&per_page=999"|json_pp|jq '.[].web_url'
 }
 
-clone_recursive_all_repo()
-{
-group_folder=$1
-group_id=$2
-relative_path=${3:-'.'}
-mkdir -p $relative_path/$group_folder
-#list_project $group_id
-}
-
 generate_folder_tree_from_groups()
 {
 relative_path=${1:-'.'}
 list_groups|while read line
 do
-folder=`echo $line|sed s+https://gitlab.com/groups/++`
-clone_recursive_all_repo $folder $relative_path
+folder=`echo $line|sed s+https://gitlab.com/groups/++ | awk {'print $1'}`
+group_id=`echo $line | awk {'print $2'}`
+echo mkdir -p $relative_path/$folder
 done
 }
 
