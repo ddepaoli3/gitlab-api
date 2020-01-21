@@ -58,12 +58,12 @@ do
 repo=`echo $line | awk {'print $1'}`
 folder=`echo $line|sed s+https://gitlab.com/groups/++ | awk {'print $1'}`
 group_id=`echo $line | awk {'print $2'}`
-echo git clone $repo $relative_path/$folder
+clone_all_group_repos $group_id $relative_path
 done
 }
 
 generate_folder_tree_from_groups ~/workspace-gitlab-clone
-#clone_recursively_all_repos ~/workspace-gitlab-clone
-clone_all_group_repos 5400554 ~/workspace-gitlab-clone
+clone_recursively_all_repos ~/workspace-gitlab-clone
+#clone_all_group_repos 5400554 ~/workspace-gitlab-clone
 #list_subgroups 1179730
 #.[] |  "\(.web_url) \(.id)"
